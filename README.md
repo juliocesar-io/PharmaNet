@@ -7,7 +7,7 @@ This repository provides a PyTorch implementation of PharmaNet, presented in the
 
 # **Pretrained Models**
 
-Pretrained models for each fold of our 4 fold cross-validation are available in this [link] (https://drive.google.com/drive/folders/1o6-1vET_YzMng0NiUbJ2MHWSlowPNj_K?usp=sharing). 
+Pretrained models for each fold of our 4 fold cross-validation are available in this [link](https://drive.google.com/drive/folders/1o6-1vET_YzMng0NiUbJ2MHWSlowPNj_K?usp=sharing). 
 
 # **Requirements**
 * Pytorch >= 1.4
