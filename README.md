@@ -51,3 +51,20 @@ Install the dependencies:
 mamba install pytorch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0 cudatoolkit=11.3 -c pytorch -c conda-forge
 pip install pandas tqdm matplotlib scikit-image scikit-learn
 ```
+
+
+## Test the model
+
+```bash
+python test.py 
+```
+
+
+## Train the model
+
+```bash
+python train.py
+```
+
+
+
