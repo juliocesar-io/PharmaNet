@@ -13,3 +13,53 @@ Pretrained models for each fold of our 4 fold cross-validation are available in 
 * Pytorch >= 1.4
 * Pandas 
 * Tqdm
+
+
+## Download the pretrained models
+
+Get the pre trained models from Hugging Face:
+
+```bash
+git lfs install
+git clone https://huggingface.co/juliocesar-io/PharmaNet
+```
+
+
+Then, create a new conda environment:  
+
+```bash
+mamba create -n PharmaNet python=3.8
+```
+
+
+## CPU only installation
+
+Activate the environment:
+
+```bash
+mamba activate PharmaNet
+```
+
+Install the dependencies:
+
+```bash
+mamba install pytorch==1.9.0 torchvision==0.10.0 -c pytorch
+pip install pandas tqdm matplotlib scikit-image scikit-learn
+```
+
+# GPU installation
+
+If you have a CUDA enabled GPU, you can install the dependencies for GPU:
+
+Activate the environment:
+
+```bash
+mamba activate PharmaNet
+```
+
+Install the dependencies:
+
+```bash
+mamba install pytorch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0 cudatoolkit=11.3 -c pytorch -c conda-forge
+pip install pandas tqdm matplotlib scikit-image scikit-learn
+```
