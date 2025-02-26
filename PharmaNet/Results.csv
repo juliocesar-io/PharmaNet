@@ -1,0 +1,2 @@
+cross_val,results_dir,results_path,model,bidireccional,num_layers,batch_size,hidden_size,epochs,add_val,neighbours,ngpu,save,kernel_size,padding,learning_rate,seed,balanced_loader,checkpoint,workers,Date,Best_NAP,Best_ACC,Best_AUC,Best_Fscore
+1,./PharmaNet,Best_Config,5,True,10,128,256,30,0,0,4,True,5,False,0.0005,1,False,False,4,2025-02-24,0.6020737456541793,"tensor(0.6212, dtype=torch.float64)",0.964532840926575,0.6748309854260495
