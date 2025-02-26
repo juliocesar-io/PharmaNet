@@ -1,0 +1,10 @@
+.pycache/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+.DS_Store
+PharmaNet/Best_Config/model1/Checkpoint.pth
+PharmaNet/Best_Config/model1/model.pth
