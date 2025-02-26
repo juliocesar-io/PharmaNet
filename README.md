@@ -5,16 +5,6 @@ This repository provides a PyTorch implementation of PharmaNet, presented in the
 # **Overview**
 <p align="center"><img src="Overview.png" /></p>
 
-# **Pretrained Models**
-
-Pretrained models for each fold of our 4 fold cross-validation are available in this [link](https://drive.google.com/drive/folders/1o6-1vET_YzMng0NiUbJ2MHWSlowPNj_K?usp=sharing). 
-
-# **Requirements**
-* Pytorch >= 1.4
-* Pandas 
-* Tqdm
-
-
 ## Download the pretrained models
 
 Get the pre trained models from Hugging Face:
@@ -24,13 +14,11 @@ git lfs install
 git clone https://huggingface.co/juliocesar-io/PharmaNet
 ```
 
-
 Then, create a new conda environment:  
 
 ```bash
 mamba create -n PharmaNet python=3.8
 ```
-
 
 ## CPU only installation
 
@@ -47,7 +35,7 @@ mamba install pytorch==1.9.0 torchvision==0.10.0 -c pytorch
 pip install pandas tqdm matplotlib scikit-image scikit-learn
 ```
 
-# GPU installation
+## GPU installation
 
 If you have a CUDA enabled GPU, you can install the dependencies for GPU:
 
