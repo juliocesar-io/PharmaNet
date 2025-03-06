@@ -51,25 +51,25 @@ print('Data for test:', len(data_test['Smiles']),'\n')
 experiment_path = os.path.join(args["results_dir"],
                                 args["results_path"])
 dataset = {}
-for folder in range(1,5):
-    # Creating Saving Folder
-    saving_path = os.path.join(experiment_path, 'model{}'.format(folder))
 
-    ## Loading the model
+# Creating Saving Folder
+saving_path = os.path.join(experiment_path, 'model1')
 
-    model_path = os.path.join(saving_path, 'model.pth')
-    trained_model = torch.load(model_path) 
+## Loading the model
 
-    ## Embedding Functions
-    char_to_int = trained_model['charset']
+model_path = os.path.join(saving_path, 'model.pth')
+trained_model = torch.load(model_path) 
 
-    vocab_size = len(char_to_int)
-    embed = trained_model['embed']
+## Embedding Functions
+char_to_int = trained_model['charset']
+
+vocab_size = len(char_to_int)
+embed = trained_model['embed']
     
 
-    # ------------------- DATASET ------------------------
+# ------------------- DATASET ------------------------
 
-    dataset[folder] = SMILESDataset(data_test, vocab_size, char_to_int, embed,
+dataset[1] = SMILESDataset(data_test, vocab_size, char_to_int, embed,
                                     args["neighbours"], args["padding"])
 
 ## Class details
@@ -148,35 +148,34 @@ def test(test_loader, targets_class, net, num_classes, saving_path):
     # Iterate over data
     batch = {}
 
-    for num_model in range(1,5):
-        trained_model = get_trained_model(net, num_model)
-        net.load_state_dict(trained_model)
-        first = True
-        loader = test_loader[num_model]
-        lab =  np.array([])
-        smiles =  np.array([])
+    trained_model = get_trained_model(net, 1)
+    net.load_state_dict(trained_model)
+    first = True
+    loader = test_loader[1]
+    lab =  np.array([])
+    smiles =  np.array([])
 
-        for inputs, smile, labels in tqdm(loader):
-            inputs  = torch.tensor(inputs, dtype=torch.float32)
-            inputs = inputs.to(device)
-            labels = labels.to(device)
+    for inputs, smile, labels in tqdm(loader):
+        inputs  = torch.tensor(inputs, dtype=torch.float32)
+        inputs = inputs.to(device)
+        labels = labels.to(device)
 
-            # track history if only in train
-            with torch.set_grad_enabled(False):
+        # track history if only in train
+        with torch.set_grad_enabled(False):
 
-                # Get model outputs and calculate loss
-                outputs= net(inputs)
-                if first:
-                    batch[num_model] = outputs
-                    first = False
-                else:
-                    batch[num_model] = torch.cat((batch[num_model],
+            # Get model outputs and calculate loss
+            outputs= net(inputs)
+            if first:
+                batch[1] = outputs
+                first = False
+            else:
+                batch[1] = torch.cat((batch[1],
                                                     outputs),
                                                     axis = 0)
-                labels_array = labels.clone().cpu()
-                labels_array = labels_array.detach().numpy()
-                lab = np.append(lab, labels_array)
-                smiles = np.append(smiles, smile)
+            labels_array = labels.clone().cpu()
+            labels_array = labels_array.detach().numpy()
+            lab = np.append(lab, labels_array)
+            smiles = np.append(smiles, smile)
     
     # Output modification for mAP computing
     
@@ -218,8 +217,7 @@ def main():
     since = time.time()
     print('Testing PharmaNet')
     loader = {}
-    for folder in range(1,5):
-        loader[folder] = make_test_loader(dataset[folder], num_classes)
+    loader[1] = make_test_loader(dataset[1], num_classes)
     
         
     acc, aps, naps, fmeasure, auc, predictions_map = test(loader,
